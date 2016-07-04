@@ -1,0 +1,10 @@
+﻿@model imperugo.aspnet.core.training.Models.BlogConfiguration
+<h1>
+	@Model.Title
+</h1>
+
+<p><strong>Description:</strong> @Model.Description</p>
+<p><strong>Tags:</strong> @string.Join(",", Model.Tags)</p>
+<p><strong>Author:</strong> @Model.Author</p>
+<p><strong>Blog:</strong> <a href="@Model.SiteUri" target="_blank">@Model.SiteUri</a></p>
+<p><strong>Twitter:</strong> <a href="http://twitter.com/@Model.TwitterAccount" target="_blank">@Model.TwitterAccount</a></p>

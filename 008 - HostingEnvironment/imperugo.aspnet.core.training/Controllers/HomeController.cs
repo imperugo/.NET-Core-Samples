@@ -1,4 +1,5 @@
-﻿using imperugo.aspnet.core.training.Repositories;
+﻿using System;
+using imperugo.aspnet.core.training.Repositories;
 using imperugo.aspnet.core.training.Repositories.Abstracts;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,6 +17,11 @@ namespace imperugo.aspnet.core.training.Controllers
 		{
 			var model = this.blogConfigurationRepository.GetDefaultConfiguration();
 			return View(model);
+		}
+
+		public void Throw()
+		{
+			int.Parse("this string is not a number so, an Exception should be throw");
 		}
 	}
 }
