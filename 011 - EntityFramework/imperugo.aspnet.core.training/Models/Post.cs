@@ -12,5 +12,6 @@ namespace imperugo.aspnet.core.training.Models
 		public DateTimeOffset PublishDate { get; set; }
 		public Category Category { get; set; }
 		public List<PostTags> Tags { get; set; }
+		public List<Comment> Comments { get; set; }
 	}
 }
