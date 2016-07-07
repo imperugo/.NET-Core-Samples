@@ -1,6 +1,7 @@
 ﻿using imperugo.aspnet.core.training.Models;
 using imperugo.aspnet.core.training.Repositories.Abstracts;
 using imperugo.aspnet.core.training.Repositories.Responses;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace imperugo.aspnet.core.training.Apis
@@ -8,6 +9,7 @@ namespace imperugo.aspnet.core.training.Apis
 	// Good article about routing with aspnet core
 	// http://stephenwalther.com/archive/2015/02/07/asp-net-5-deep-dive-routing
 
+    [Authorize]
 	[Route("api/[controller]")]
 	public class BlogPostController : Controller
 	{
