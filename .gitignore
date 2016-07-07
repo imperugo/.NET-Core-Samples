@@ -251,3 +251,4 @@ paket-files/
 .idea/
 *.sln.iml
 /011 - EntityFramework/imperugo.aspnet.core.training/dataeventrecords.sqlite
+/.gitattributes
