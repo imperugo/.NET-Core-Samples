@@ -250,5 +250,5 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
-/011 - EntityFramework/imperugo.aspnet.core.training/dataeventrecords.sqlite
+*.sqlite
 /.gitattributes
