@@ -16,6 +16,7 @@ using Microsoft.Extensions.Configuration;
 using imperugo.aspnet.core.training.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace imperugo.aspnet.core.training
 {
@@ -66,10 +67,16 @@ namespace imperugo.aspnet.core.training
 			{
 				loggerFactory.AddDebug(LogLevel.Debug);
 				loggerFactory.AddConsole(this.configurationRoot.GetSection("logging"));
-			}
 
-			//Here a good link https://docs.asp.net/en/latest/fundamentals/environments.html
-			if (this.myConfiguration.ShowException)
+                using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope()) 
+                {
+                    var userManager = serviceScope.ServiceProvider.GetService<UserManager<User>>();
+                    serviceScope.ServiceProvider.GetService<BlogDbContext>().EnsureSeedData(userManager).Wait();
+                }
+            }
+
+            //Here a good link https://docs.asp.net/en/latest/fundamentals/environments.html
+            if (this.myConfiguration.ShowException)
 			{
 				app.UseDeveloperExceptionPage();
 			}
