@@ -13,6 +13,8 @@ using Newtonsoft.Json.Converters;
 using imperugo.aspnet.core.training.Repositories.InMemoryRepositories;
 using imperugo.aspnet.core.training.Repositories.Abstracts;
 using Microsoft.Extensions.Configuration;
+using imperugo.aspnet.core.training.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace imperugo.aspnet.core.training
 {
@@ -40,6 +42,8 @@ namespace imperugo.aspnet.core.training
 
 		public void ConfigureServices(IServiceCollection services)
 		{
+            var connection = this.myConfiguration.SqliteConnectionString;
+            services.AddDbContext<BlogDbContext>(options => options.UseSqlite(connection));            
 			services.AddMvc();
 
 			services.AddSingleton(this.myConfiguration);
