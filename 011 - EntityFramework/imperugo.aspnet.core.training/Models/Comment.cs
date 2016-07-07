@@ -2,7 +2,8 @@
 {
 	public class Comment : EntityBase
 	{
-		public string Email { get; set; }
+        public Post Post { get; set; }
+        public string Email { get; set; }
 		public string Name { get; set; }
 		public string Message { get; set; }
 	}
