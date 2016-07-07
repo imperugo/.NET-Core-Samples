@@ -52,7 +52,7 @@ namespace imperugo.aspnet.core.training
 			 * We need to register the repository implementation into the DI container
 			 */
 			services.AddSingleton<IBlogConfigurationRepository, BlogConfigurationRepository>();
-			services.AddSingleton<IBlogPostRepository, BlogPostRepository>();
+			services.AddScoped<IBlogPostRepository, Repositories.SqLiteRepositories.BlogPostRepository>();
 		}
 
 		public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
