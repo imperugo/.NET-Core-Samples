@@ -36,5 +36,12 @@ namespace imperugo.aspnet.core.training.Apis
 
 			return Json(this.blogPostRepository.GetById(slug));
 		}
+
+        [HttpPost("Add")]
+        public Post PostPost(Post newPost)
+        {
+            this.blogPostRepository.Add(newPost);
+            return newPost;
+        }
 	}
 }

@@ -8,5 +8,6 @@ namespace imperugo.aspnet.core.training.Repositories.Abstracts
 	{
 		PagedResult<Post> GetPosts(int pageIndex, int pageSize);
 		Post GetById(string slug);
-	}
+        void Add(Post newPost);
+    }
 }

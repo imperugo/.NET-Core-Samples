@@ -35,5 +35,11 @@ namespace imperugo.aspnet.core.training.Repositories.InMemoryRepositories
 	    {
 		    return inMemoryDb.FirstOrDefault(x => x.Slug == slug);
 	    }
-	}
+
+        public void Add(Post newPost)
+        {
+            newPost.Id = (inMemoryDb.Max(p => (int?)p.Id) ?? 0) + 1;
+            inMemoryDb.Add(newPost);
+        }
+    }
 }

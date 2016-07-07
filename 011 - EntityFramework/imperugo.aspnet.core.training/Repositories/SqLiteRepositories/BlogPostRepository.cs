@@ -36,5 +36,11 @@ namespace imperugo.aspnet.core.training.Repositories.SqLiteRepositories
 	    {
 		    return context.Posts.FirstOrDefault(x => x.Slug == slug);
 	    }
-	}
+
+        public async void Add(Post newPost)
+        {
+            context.Posts.Add(newPost);
+            await context.SaveChangesAsync();
+        }
+    }
 }
