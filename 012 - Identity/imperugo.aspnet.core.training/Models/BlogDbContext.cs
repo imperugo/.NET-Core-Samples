@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace imperugo.aspnet.core.training.Models
 {
-    public class BlogDbContext : IdentityDbContext
+    public class BlogDbContext : IdentityDbContext<User>
     {
         public BlogDbContext(DbContextOptions<BlogDbContext> options) : base(options)
         {
