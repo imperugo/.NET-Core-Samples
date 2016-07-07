@@ -1,0 +1,38 @@
+﻿@model PostEditVM
+@{ 
+    ViewBag.Title = "Create";
+}
+
+<h1>Create</h1>
+
+<form asp-action="Create" method="post">
+    <div>
+        <label asp-for="Slug"></label>
+        <input asp-for="Slug" />
+        <span asp-validation-for="Slug"></span>
+    </div>
+    <div>
+        <label asp-for="Title"></label>
+        <input asp-for="Title" />
+        <span asp-validation-for="Title"></span>
+    </div>
+    <div>
+        <label asp-for="Abstract"></label>
+        <input asp-for="Abstract" />
+        <span asp-validation-for="Abstract"></span>
+    </div>
+    <div>
+        <label asp-for="Body"></label>
+        <textarea asp-for="Body"></textarea>
+        <span asp-validation-for="Body"></span>
+    </div>
+    <div>
+        <label asp-for="PublishDate"></label>
+        <input asp-for="PublishDate" />
+        <span asp-validation-for="PublishDate"></span>
+    </div>
+
+    <div>
+        <input type="submit" value="Save" />
+    </div>
+</form>

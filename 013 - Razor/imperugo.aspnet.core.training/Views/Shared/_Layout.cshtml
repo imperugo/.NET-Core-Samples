@@ -11,6 +11,7 @@
         @if (User.Identity.IsAuthenticated)
         {
             <div>@User.Identity.Name</div>
+            <a asp-action="Create" asp-controller="Home">New Post</a>
             <form method="post" asp-controller="Account" asp-action="Logout">
                 <input type="submit" value="Logout" />
             </form>
