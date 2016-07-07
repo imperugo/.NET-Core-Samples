@@ -6,7 +6,8 @@
 		public FacebookConfiguration Facebook { get; set; }
 		public SmtpConfiguration SmtpConfiguration { get; set; }
 		public bool ShowException { get; set; }
-	}
+        public string SqliteConnectionString { get; set; }
+    }
 
 	public class DatabaseConfiguration
 	{
