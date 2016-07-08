@@ -1,0 +1,36 @@
+﻿@using System.Security.Claims
+@model ModelBase
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>@Model.BlogConfiguration.Title</title>
+	<meta name="author" content="@Model.BlogConfiguration.Author">
+
+	<meta name="description" content="@Model.BlogConfiguration.Description">
+
+	<meta name="keywords" content="@string.Join(",", Model.BlogConfiguration.Tags)">
+
+</head>
+<body>
+    <div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div>@User.Identity.Name</div>
+            <a asp-action="Create" asp-controller="Home">New Post</a>
+            <form method="post" asp-controller="Account" asp-action="Logout">
+                <input type="submit" value="Logout" />
+            </form>
+        }
+        else
+        {
+            <a asp-controller="Account" asp-action="Login">Login</a>
+        }
+    </div>
+
+	<div>
+		@RenderBody()
+	</div>
+</body>
+</html>

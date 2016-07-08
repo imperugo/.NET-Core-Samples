@@ -1,0 +1,19 @@
+﻿@using imperugo.aspnet.core.training.Models
+@using imperugo.aspnet.core.training.Repositories.Responses
+
+@model PagedResult<Post>
+@{ 
+    ViewBag.Title = "Blog posts";
+}
+
+<h1>Blog posts</h1>
+
+@foreach (var post in Model.Result)
+{
+    <article>
+        <h3>@post.Title</h3>
+        <div>
+            @post.Abstract
+        </div>
+    </article>
+}
