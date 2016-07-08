@@ -1,0 +1,14 @@
+﻿@model ModelBase
+<h1>
+	@Model.BlogConfiguration.Title
+</h1>
+
+<p><strong>Description:</strong> @Model.BlogConfiguration.Description</p>
+<p><strong>Tags:</strong> @string.Join(",", Model.BlogConfiguration.Tags)</p>
+<p><strong>Author:</strong> @Model.BlogConfiguration.Author</p>
+<p><strong>Blog:</strong> <a href="@Model.BlogConfiguration.SiteUri" target="_blank">@Model.BlogConfiguration.SiteUri</a></p>
+<p><strong>Twitter:</strong> <a href="http://twitter.com/@Model.BlogConfiguration.TwitterAccount" target="_blank">@Model.BlogConfiguration.TwitterAccount</a></p>
+
+<div>
+    <a asp-controller="Home" asp-action="List">Blog posts</a>
+</div>
