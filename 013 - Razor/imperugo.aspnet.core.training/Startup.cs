@@ -44,12 +44,16 @@ namespace imperugo.aspnet.core.training
 
 		public void ConfigureServices(IServiceCollection services)
 		{
-            var connection = this.myConfiguration.SqliteConnectionString;
-            services.AddDbContext<BlogDbContext>(options => options.UseSqlite(connection));
+			var fullDbPath = this.hostingEnvironment.ContentRootPath + "\\" + this.myConfiguration.DbName;
 
-            services.AddIdentity<User, IdentityRole>()
-                    .AddEntityFrameworkStores<BlogDbContext>();
-                    
+			var connectionString = $"Data Source={fullDbPath}";
+
+
+			services.AddDbContext<BlogDbContext>(options => options.UseSqlite(connectionString));
+
+			services.AddIdentity<User, IdentityRole>()
+					.AddEntityFrameworkStores<BlogDbContext>();
+
 			services.AddMvc();
 
 			services.AddSingleton(this.myConfiguration);
@@ -68,20 +72,20 @@ namespace imperugo.aspnet.core.training
 				loggerFactory.AddDebug(LogLevel.Debug);
 				loggerFactory.AddConsole(this.configurationRoot.GetSection("logging"));
 
-                using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope()) 
-                {
-                    var userManager = serviceScope.ServiceProvider.GetService<UserManager<User>>();
-                    serviceScope.ServiceProvider.GetService<BlogDbContext>().EnsureSeedData(userManager).Wait();
-                }
-            }
+				using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+				{
+					var userManager = serviceScope.ServiceProvider.GetService<UserManager<User>>();
+					serviceScope.ServiceProvider.GetService<BlogDbContext>().EnsureSeedData(userManager).Wait();
+				}
+			}
 
-            //Here a good link https://docs.asp.net/en/latest/fundamentals/environments.html
-            if (this.myConfiguration.ShowException)
+			//Here a good link https://docs.asp.net/en/latest/fundamentals/environments.html
+			if (this.myConfiguration.ShowException)
 			{
 				app.UseDeveloperExceptionPage();
 			}
 
-            app.UseIdentity();
+			app.UseIdentity();
 
 			// Add MVC to the request pipeline
 			app.UseMvc(routes =>
